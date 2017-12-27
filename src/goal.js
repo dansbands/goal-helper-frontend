@@ -5,6 +5,7 @@ class Goal {
     this.title = json.title
     this.notes = json.notes
     this.id = json.id
+    this.userId = parseInt(currentUserId)
     allGoals.push(this)
   }
 
@@ -102,9 +103,7 @@ class Goal {
         </div>
         <div id="collapse${this.id}" class="panel-collapse collapse">
           <ul id="list-goals-${this.id}" class="list-group">
-            <li class="list-group-item"><a href="#">Codecademy: Learn CSS</a></li>
-            <li class="list-group-item"><a href="">W3Schools: CSS</a></li>
-            <li class="list-group-item"><a href="">Treehouse: Learn CSS</a></li>
+            
           </ul>
           <div class="panel-footer">Notes: ${this.notes}</div>
         </div>

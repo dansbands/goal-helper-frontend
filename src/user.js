@@ -18,10 +18,10 @@ class User {
     userId = document.getElementById('user-select').value
       if (userId) {
         return currentUserId = userId
-        console.log('New User', userId)
+        // console.log('New User', userId)
       } else {
         currentUserId = this.all()[0].id
-        console.log('Current User:', currentUserId);
+        // console.log('Current User:', currentUserId);
         return currentUserId
       }
       // Adapter.getGoals()
@@ -34,7 +34,7 @@ class User {
 
     static changeUser(e) {
       currentUserId = e.target.value
-      console.log(currentUserId);
+      // console.log(currentUserId);
       allGoals = []
       Adapter.getGoals()
       // User.currentUser()

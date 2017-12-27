@@ -1,22 +1,12 @@
 let userId = 0
-// let currentUser = User.all()
+
 
 class Adapter {
   constructor() {
 
   }
 
-
-  // static getCurrentUser() {
-  //   userId = document.getElementById('user-select').value
-  //   if (userId) {
-  //     console.log(userId)
-  //
-  //   } else {
-  //     currentUser = User
-  //     console.log(currentUser);
-  //   }
-  // }
+/// I can probably get Users, Goals, and Links in one req
 
   static getUsers() {
     fetch('http://localhost:3000/api/v1/users')
@@ -24,25 +14,24 @@ class Adapter {
     .then(json => User.createUsers(json))
     .then(data => User.currentUser())
     .then(beef => Adapter.getGoals())
+    .then(chicken => Adapter.getLinks())
   }
 
   static getGoals() {
-    console.log('Adapter:', currentUserId)
-    // let userId = document.getElementById('user-select')
-    let userId = 1
-
     fetch(`http://localhost:3000/api/v1/users/${currentUserId}`)
     .then(resp => resp.json())
-    // .then(json => console.log(json.goals))
+    // .then(console.log)
     .then(json => Goal.createGoals(json.goals))
   }
 
   static getLinks() {
+    fetch(`http://localhost:3000/api/v1/users/${currentUserId}`)
+    .then(resp => resp.json())
+    .then(json => Link.createLinks(json.goals))
 
   }
 
   static createNewGoal(json) {
-    // console.log(json);
     fetch('http://localhost:3000/api/v1/goals', {
       method: 'POST',
       headers: {
@@ -50,9 +39,7 @@ class Adapter {
       },
       body: JSON.stringify(json)
     }).then(resp => resp.json())
-    // .then(console.log)
     .then(data => Goal.createGoalInstance(data))
-    //this should really update from store, not refresh from API
   }
 
   static deleteGoal(id) {
