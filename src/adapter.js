@@ -1,4 +1,5 @@
-// let userId = 0
+let userId = 0
+// let currentUser = User.all()
 
 class Adapter {
   constructor() {
@@ -8,21 +9,29 @@ class Adapter {
 
   // static getCurrentUser() {
   //   userId = document.getElementById('user-select').value
-  //   console.log(userId)
+  //   if (userId) {
+  //     console.log(userId)
+  //
+  //   } else {
+  //     currentUser = User
+  //     console.log(currentUser);
+  //   }
   // }
 
   static getUsers() {
     fetch('http://localhost:3000/api/v1/users')
     .then(resp => resp.json())
     .then(json => User.createUsers(json))
-    // .then(Adapter.getCurrentUser())
+    .then(data => User.currentUser())
+    .then(beef => Adapter.getGoals())
   }
 
   static getGoals() {
+    console.log('Adapter:', currentUserId)
     // let userId = document.getElementById('user-select')
     let userId = 1
 
-    fetch(`http://localhost:3000/api/v1/users/${userId}`)
+    fetch(`http://localhost:3000/api/v1/users/${currentUserId}`)
     .then(resp => resp.json())
     // .then(json => console.log(json.goals))
     .then(json => Goal.createGoals(json.goals))

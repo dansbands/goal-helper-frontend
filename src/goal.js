@@ -22,8 +22,6 @@ class Goal {
 
   static createGoalInstance(json) {
     let newGoal = new Goal(json)
-    console.log(this)
-
     this.getGoalsFromAll()
   }
 

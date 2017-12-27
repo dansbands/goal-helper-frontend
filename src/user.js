@@ -1,4 +1,5 @@
 let allUsers = []
+let currentUserId
 
 class User {
   constructor(json) {
@@ -12,6 +13,33 @@ class User {
   static all() {
     return [...allUsers]
   }
+
+  static currentUser() {
+    userId = document.getElementById('user-select').value
+      if (userId) {
+        return currentUserId = userId
+        console.log('New User', userId)
+      } else {
+        currentUserId = this.all()[0].id
+        console.log('Current User:', currentUserId);
+        return currentUserId
+      }
+      // Adapter.getGoals()
+    }
+
+    static attachListeners() {
+      document.getElementById('user-select').addEventListener('change', this.changeUser)
+    }
+
+
+    static changeUser(e) {
+      currentUserId = e.target.value
+      console.log(currentUserId);
+      allGoals = []
+      Adapter.getGoals()
+      // User.currentUser()
+    }
+
 
   static createUsers(json) {
     for (var i = 0; i < json.length; i++) {
