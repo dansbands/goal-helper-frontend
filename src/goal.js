@@ -16,10 +16,42 @@ class Goal {
     for (var i = 0; i < json.length; i++) {
       let goal = json[i]
       let newGoal = new Goal(goal)
+    }
+    this.getGoalsFromAll()
+  }
+
+  static createGoalInstance(json) {
+    let newGoal = new Goal(json)
+    console.log(this)
+
+    this.getGoalsFromAll()
+  }
+
+  static getGoalsFromAll() {
+    document.getElementById('goals').innerHTML=''
+    let goals = Goal.all()
+    for (var i = 0; i < goals.length; i++) {
+      let newGoal = goals[i]
       newGoal.addToGoalList()
     }
   }
 
+  static attachListeners() {
+    document.getElementById('new-goal-form').addEventListener('submit', this.createGoal)
+  }
+
+  static createGoal(e) {
+    e.preventDefault()
+    let newTitle = document.getElementById('new-goal').value
+    let newNotes = document.getElementById('note-area').value
+    let currentUser = document.getElementById('user-select').value
+    let data = {
+      title: newTitle,
+      notes: newNotes,
+      user_id: currentUser
+    }
+    Adapter.createNewGoal(data)
+  }
 
   ///// instance methods
 
@@ -29,20 +61,49 @@ class Goal {
     panel.innerHTML = this.render()
     panel.class = "panel-group"
     goalList.appendChild(panel)
-    console.log(this)
+    panel.addEventListener('click', this.panelAction)
   }
+
+  panelAction(e) {
+    if (e.target.id.includes('delete-goal')) {
+      let targetId = parseInt(e.target.id.slice(12))
+      Goal.deleteFromAll(targetId)
+      Goal.getGoalsFromAll()
+      Adapter.deleteGoal(targetId)
+      // Adapter.getGoals()
+    }
+  }
+
+
+
+  static deleteFromAll(id) {
+    let goals = Goal.all()
+    for (var i = 0; i < goals.length; i++) {
+      if (goals[i].id === parseInt(id)) {
+        allGoals.splice(i,1)
+      }
+    }
+  }
+
+
+
+    //delete from goal list
+
+
+
 
   render () {
     return (
       `<div class="panel panel-default">
         <div class="panel-heading">
-          <h4 class="panel-title">
-            <input type="checkbox" value="" style="margin-right: 10px">
+          <h4 class="panel-title" style="overflow: hidden">
+            <input type="checkbox" style="margin-right: 10px">
             <a data-toggle="collapse" href="#collapse${this.id}">${this.title}</a>
+            <div value="1" id="delete-goal-${this.id}" class="glyphicon glyphicon-trash pull-right"></div>
           </h4>
         </div>
         <div id="collapse${this.id}" class="panel-collapse collapse">
-          <ul class="list-group">
+          <ul id="list-goals-${this.id}" class="list-group">
             <li class="list-group-item"><a href="#">Codecademy: Learn CSS</a></li>
             <li class="list-group-item"><a href="">W3Schools: CSS</a></li>
             <li class="list-group-item"><a href="">Treehouse: Learn CSS</a></li>
