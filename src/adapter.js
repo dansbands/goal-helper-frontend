@@ -50,6 +50,7 @@ class Adapter {
       body: JSON.stringify(json)
     }).then(resp => resp.json())
     .then(data => Goal.updateGoalInstance(data))
+    .then(beef => Link.getLinksFromAll())
   }
 
   static deleteGoal(id) {

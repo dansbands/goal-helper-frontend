@@ -8,8 +8,8 @@
 
     <link rel="stylesheet" href="css/index.css">
 
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="src/index.js"></script>
   </head>
   <body>
@@ -55,11 +55,11 @@
         <div class="row">
           <h3 id="instructions">Enter A New Goal</h3>
           <form class="form-inline" id="goal-form">
-            <div class="form-group">
-              <input type="text" class="form-control" id="goal-title" style="width: 680px" placeholder="Learn CSS">
+            <div class="form-group" style="width: 100%">
+              <input type="text" class="form-control" id="goal-title" style="width: 90%" placeholder="Learn CSS">
+              <button type="submit" class="btn btn-default">Submit</button>
             </div>
 
-            <button type="submit" class="btn btn-default">Submit</button>
             <input type="number" name="goal-id" id="goal-id" value="0">
           </form>
         </div>
@@ -77,7 +77,7 @@
         <div class="row">
           <h3>Suggested Resources</h3>
           <div style="height: 350px; overflow: scroll">
-            <div class="panel panel-default">
+            <div id="resource-1" class="panel panel-default resources">
               <div class="panel-body">
                 <div class="col-sm-8">
                   <h4><a href="https://medium.freecodecamp.org/learn-css-grid-in-5-minutes-f582e87b1228">Medium: CSS Grid</a>
@@ -87,7 +87,8 @@
                 </div>
                 <div class="col-sm-4">
                   <h2>
-                    <span class="glyphicon glyphicon-remove-circle glyphicon-lg pull-right" style="margin-right: 20px; color: darkred"></span>
+                    <a href="#"></a>
+                    <span class="glyphicon glyphicon-remove-circle glyphicon-lg pull-right" style="margin-right: 20px; color: darkred" data-toggle="collapse" data-target="resources"></span>
                   </h2>
                   <h2>
                     <span class="glyphicon glyphicon-ok-circle pull-right" style="margin-right: 20px; color: green"></span>
@@ -96,7 +97,7 @@
               </div>
             </div>
 
-            <div class="panel panel-default">
+            <div id="resource-2" class="panel panel-default">
               <div class="panel-body">
                 <div class="col-sm-8">
                   <h4><a href="https://www.w3schools.com/css/">W3Schools: CSS</a>
@@ -115,7 +116,7 @@
               </div>
             </div>
 
-            <div class="panel panel-default">
+            <div id="resource-3" class="panel panel-default">
               <div class="panel-body">
                 <div class="col-sm-8">
                   <h4><a href="https://teamtreehouse.com/learn/css?utm_source=google&cid=1352&utm_source=google&campaign=792007886&utm_term=&cid=1352&gclid=Cj0KCQiA9_LRBRDZARIsAAcLXjcIduHljau_Fht3N4frUqh6rVXMG40hh_g1P1YtRDoOFgCrZJqb50UaAkA7EALw_wcB&gclsrc=aw.ds">Treehouse: Learn CSS</a>
@@ -134,7 +135,7 @@
               </div>
             </div>
 
-            <div class="panel panel-default">
+            <div id="resource-4" class="panel panel-default">
               <div class="panel-body">
                 <div class="col-sm-8">
                   <h4><a href="https://www.codecademy.com/learn/learn-css">Codecademy: Learn CSS</a>
@@ -153,7 +154,7 @@
               </div>
             </div>
 
-            <div class="panel panel-default">
+            <div id="resource-5" class="panel panel-default">
               <div class="panel-body">
                 <div class="col-sm-8">
                   <h4><a href="https://medium.freecodecamp.org/learn-css-grid-in-5-minutes-f582e87b1228">Medium: CSS Grid</a>

@@ -33,6 +33,13 @@ class Goal {
       let newGoal = goals[i]
       newGoal.addToGoalList()
     }
+    if (id) {
+      let goalDiv = document.getElementById(`collapse${id}`)
+      goalDiv.className += " in"
+
+      // console.log()
+
+    }
   }
 
   static attachListeners() {
@@ -96,7 +103,7 @@ class Goal {
     currentGoal.notes = json.notes
     // currentGoal.title = json.links //do I need this, or will I update it in links?
 
-    this.getGoalsFromAll()
+    this.getGoalsFromAll(json.id)
   }
 
   // submit calls goalAction
@@ -111,6 +118,8 @@ class Goal {
         //   </ul>
         //   <div class="panel-footer">Notes: Look at WesBos for Vanilla JS Tutorials Hey Hey !!! Updated!</div>
         // </div>
+
+        // SOLUTION: add className of 'in' to goal with same id as goal-form
 
 
 
@@ -130,22 +139,22 @@ class Goal {
     console.log('click')
   }
 
-  static toggleCollapse() {
-    let elements = document.getElementsByClassName('collapse')
-    for (let i = 0; i < elements.length; i++) {
-      if (!elements[i].style.display) {
-        elements[i].style.display = "block"
-      }
-      if (elements[i].style.display === "none") {
-        elements[i].style.display = "block"
-      } else if (elements[i].style.display === "block"){
-        elements[i].style.display = "none"
-      }
-
-    }
-
-    // elements.forEach(el => console.log(el))
-  }
+  // static toggleCollapse() {
+  //   let elements = document.getElementsByClassName('collapse')
+  //   for (let i = 0; i < elements.length; i++) {
+  //     if (!elements[i].style.display) {
+  //       elements[i].style.display = "block"
+  //     }
+  //     if (elements[i].style.display === "none") {
+  //       elements[i].style.display = "block"
+  //     } else if (elements[i].style.display === "block"){
+  //       elements[i].style.display = "none"
+  //     }
+  //
+  //   }
+  //
+  //   // elements.forEach(el => console.log(el))
+  // }
   ///// instance methods
 
   addToGoalList() {
@@ -166,7 +175,7 @@ class Goal {
       Adapter.deleteGoal(targetId)
     } else if (e.target.id.includes('select-goal')){
       e.preventDefault()
-      
+
       console.log(this);
       let linkId = parseInt(e.target.id.slice(12))
       let currentGoal = Goal.all().find(obj => obj.id === linkId)
@@ -180,7 +189,7 @@ class Goal {
       goalId.value = currentGoal.id
 
       Goal.populateGoalForm()
-      Goal.toggleCollapse()
+      // Goal.toggleCollapse()
     }
   }
 
