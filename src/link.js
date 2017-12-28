@@ -1,11 +1,11 @@
 let allLinks = []
 
 class Link {
-  constructor(json) {
+  constructor(json, goalId) {
     this.id = json.id
     this.title = json.title
     this.url = json.url
-    this.goalId = json.goal.id
+    this.goalId = goalId
     allLinks.push(this)
   }
 
@@ -14,33 +14,24 @@ class Link {
   }
 
   static createLinks(json) {
-    json.forEach(item => {
-      console.log("Goal", item.id, item.links)
-      let div = document.getElementById(`list-goals-${item.id}`)
-      item.links.forEach(link => {
+    json.forEach(goal => {
+      let div = document.getElementById(`list-goals-${goal.id}`)
+      goal.links.forEach(link => {
         let li = document.createElement('li')
         li.className = "list-group-item"
         li.id = `goal-link-${link.id}`
-        li.innerHTML = `<a href="${link.url}">${link.title}</a>`
+        li.innerHTML = `<a href="${link.url}" target="_blank">${link.title}</a>`
         div.appendChild(li)
+        let newLink = new Link(link, goal.id)
       })
     })
-    // for (var i = 0; i < json.length; i++) {
-    //   let link = json[i]
-    //   let newLink = new Link(link)
-    //   newLink.addToGoalLinks()
-    // }
   }
 
-////This needs to be finished
 
-  addToGoalLinks() {
-    // console.log(this)
-  }
 
-  render() {
-    return(
-      `<li class="list-group-item" id="goal-link-${link.id}"><a href="${link.url}">${link.title}</a></li>`
-    )
-  }
+  // render() {
+  //   return(
+  //     `<li class="list-group-item" id="goal-link-${link.id}"><a href="${link.url}" target="_blank">${link.title}</a></li>`
+  //   )
+  // }
 }

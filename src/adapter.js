@@ -28,7 +28,6 @@ class Adapter {
     fetch(`http://localhost:3000/api/v1/users/${currentUserId}`)
     .then(resp => resp.json())
     .then(json => Link.createLinks(json.goals))
-
   }
 
   static createNewGoal(json) {
@@ -40,6 +39,17 @@ class Adapter {
       body: JSON.stringify(json)
     }).then(resp => resp.json())
     .then(data => Goal.createGoalInstance(data))
+  }
+
+  static updateGoal(json, id) {
+    fetch(`http://localhost:3000/api/v1/goals/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(json)
+    }).then(resp => resp.json())
+    .then(data => Goal.updateGoalInstance(data))
   }
 
   static deleteGoal(id) {

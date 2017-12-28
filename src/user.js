@@ -37,6 +37,7 @@ class User {
       // console.log(currentUserId);
       allGoals = []
       Adapter.getGoals()
+      Adapter.getLinks()
       // User.currentUser()
     }
 
