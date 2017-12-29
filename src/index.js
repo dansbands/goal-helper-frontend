@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   Goal.attachListeners()
   User.attachListeners()
   Link.attachListeners()
+  Adapter.getResources()
 })
 
 

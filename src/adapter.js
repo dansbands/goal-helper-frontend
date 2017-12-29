@@ -30,6 +30,12 @@ class Adapter {
     .then(json => Link.createLinks(json.goals))
   }
 
+  static getResources() {
+    fetch(`https://www.googleapis.com/customsearch/v1?key=AIzaSyCyVz9Piq2CR5H69ntKh8IMkBPWLV2JXI0&cx=012707253764796649748:luz4j2cmipo&q=lectures`)
+    .then(resp => resp.json())
+    .then(console.log)
+  }
+
   static createNewGoal(json) {
     fetch('http://localhost:3000/api/v1/goals', {
       method: 'POST',
