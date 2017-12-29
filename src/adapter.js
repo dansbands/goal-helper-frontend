@@ -31,9 +31,10 @@ class Adapter {
   }
 
   static getResources() {
-    fetch(`https://www.googleapis.com/customsearch/v1?key=AIzaSyCyVz9Piq2CR5H69ntKh8IMkBPWLV2JXI0&cx=012707253764796649748:luz4j2cmipo&q=lectures`)
+    fetch(`https://www.googleapis.com/customsearch/v1?key=AIzaSyCyVz9Piq2CR5H69ntKh8IMkBPWLV2JXI0&cx=012707253764796649748:luz4j2cmipo&q=Learn+CSS`)
     .then(resp => resp.json())
-    .then(console.log)
+    .then(json => Resource.createResources(json.items))
+    // .then(console.log)
   }
 
   static createNewGoal(json) {

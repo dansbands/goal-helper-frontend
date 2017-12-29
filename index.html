@@ -46,28 +46,14 @@
 
         <div class="row">
           <h3>Completed Goals</h3>
-
           <div id="completed-goals"></div>
         </div>
 
-        </div>
+      </div>
+      
       <div class="col-sm-8" style="margin-left: 40px">
         <div class="row">
           <h3 id="instructions">Enter A New Goal</h3>
-          <div>
-            <!-- <script>
-              (function() {
-                var cx = '012707253764796649748:luz4j2cmipo';
-                var gcse = document.createElement('script');
-                gcse.type = 'text/javascript';
-                gcse.async = true;
-                gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(gcse, s);
-              })();
-            </script>
-            <gcse:searchbox></gcse:searchbox> -->
-          </div>
           <form class="form-inline" id="goal-form">
             <div class="form-group" style="width: 100%">
               <input type="text" class="form-control" id="goal-title" style="width: 90%" placeholder="Learn CSS">
@@ -79,10 +65,10 @@
         </div>
 
 <!-- notes row -->
-        <div class="row" style="min-height: 200px">
+        <div class="row" style="min-height: 120px">
           <div class="form">
             <h3>Notes:</h3>
-            <textarea id="goal-notes" class="form-control" name="notes" rows="6" cols="80"></textarea>
+            <textarea id="goal-notes" class="form-control" name="notes" rows="2" cols="80"></textarea>
           </div>
         </div>
 <!-- end notes row -->
@@ -90,116 +76,16 @@
 <!-- resources row -->
         <div class="row">
           <h3>Suggested Resources</h3>
-          <!-- <div>
-            <gcse:searchresults></gcse:searchresults>
-          </div> -->
-          <div style="height: 350px; overflow: scroll">
-            <div id="resource-1" class="panel panel-default resources">
-              <div class="panel-body">
-                <div class="col-sm-8">
-                  <h4><a href="https://medium.freecodecamp.org/learn-css-grid-in-5-minutes-f582e87b1228">Medium: CSS Grid</a>
-
-                  </h4>
-                  <p>Here's some preview text about this article. It's really interesting, and totally what you are looking for to complete your goal.</p>
-                </div>
-                <div class="col-sm-4">
-                  <h2>
-                    <a href="#"></a>
-                    <span class="glyphicon glyphicon-remove-circle glyphicon-lg pull-right" style="margin-right: 20px; color: darkred" data-toggle="collapse" data-target="resources"></span>
-                  </h2>
-                  <h2>
-                    <span class="glyphicon glyphicon-ok-circle pull-right" style="margin-right: 20px; color: green"></span>
-                  </h2>
-                </div>
-              </div>
-            </div>
-
-            <div id="resource-2" class="panel panel-default">
-              <div class="panel-body">
-                <div class="col-sm-8">
-                  <h4><a href="https://www.w3schools.com/css/">W3Schools: CSS</a>
-
-                  </h4>
-                  <p>Here's some preview text about this article. It's really interesting, and totally what you are looking for to complete your goal.</p>
-                </div>
-                <div class="col-sm-4">
-                  <h2>
-                    <span class="glyphicon glyphicon-remove-circle glyphicon-lg pull-right" style="margin-right: 20px; color: darkred"></span>
-                  </h2>
-                  <h2>
-                    <span class="glyphicon glyphicon-ok-circle pull-right" style="margin-right: 20px; color: green"></span>
-                  </h2>
-                </div>
-              </div>
-            </div>
-
-            <div id="resource-3" class="panel panel-default">
-              <div class="panel-body">
-                <div class="col-sm-8">
-                  <h4><a href="https://teamtreehouse.com/learn/css?utm_source=google&cid=1352&utm_source=google&campaign=792007886&utm_term=&cid=1352&gclid=Cj0KCQiA9_LRBRDZARIsAAcLXjcIduHljau_Fht3N4frUqh6rVXMG40hh_g1P1YtRDoOFgCrZJqb50UaAkA7EALw_wcB&gclsrc=aw.ds">Treehouse: Learn CSS</a>
-
-                  </h4>
-                  <p>Here's some preview text about this article. It's really interesting, and totally what you are looking for to complete your goal.</p>
-                </div>
-                <div class="col-sm-4">
-                  <h2>
-                    <span class="glyphicon glyphicon-remove-circle glyphicon-lg pull-right" style="margin-right: 20px; color: darkred"></span>
-                  </h2>
-                  <h2>
-                    <span class="glyphicon glyphicon-ok-circle pull-right" style="margin-right: 20px; color: green"></span>
-                  </h2>
-                </div>
-              </div>
-            </div>
-
-            <div id="resource-4" class="panel panel-default">
-              <div class="panel-body">
-                <div class="col-sm-8">
-                  <h4><a href="https://www.codecademy.com/learn/learn-css">Codecademy: Learn CSS</a>
-
-                  </h4>
-                  <p>Here's some preview text about this article. It's really interesting, and totally what you are looking for to complete your goal.</p>
-                </div>
-                <div class="col-sm-4">
-                  <h2>
-                    <span class="glyphicon glyphicon-remove-circle glyphicon-lg pull-right" style="margin-right: 20px; color: darkred"></span>
-                  </h2>
-                  <h2>
-                    <span class="glyphicon glyphicon-ok-circle pull-right" style="margin-right: 20px; color: green"></span>
-                  </h2>
-                </div>
-              </div>
-            </div>
-
-            <div id="resource-5" class="panel panel-default">
-              <div class="panel-body">
-                <div class="col-sm-8">
-                  <h4><a href="https://medium.freecodecamp.org/learn-css-grid-in-5-minutes-f582e87b1228">Medium: CSS Grid</a>
-
-                  </h4>
-                  <p>Here's some preview text about this article. It's really interesting, and totally what you are looking for to complete your goal.</p>
-                </div>
-                <div class="col-sm-4">
-                  <h2>
-                    <span class="glyphicon glyphicon-remove-circle glyphicon-lg pull-right" style="margin-right: 20px; color: darkred"></span>
-                  </h2>
-                  <h2>
-                    <span class="glyphicon glyphicon-ok-circle pull-right" style="margin-right: 20px; color: green"></span>
-                  </h2>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div id="resources" style="height: 350px; overflow: scroll"></div>
         </div>
 <!-- end resources row -->
-
-
 
       </div>
     </div>
     <script type="text/javascript" src="src/user.js"></script>
     <script type="text/javascript" src="src/goal.js"></script>
     <script type="text/javascript" src="src/link.js"></script>
+    <script type="text/javascript" src="src/resource.js"></script>
     <script type="text/javascript" src="src/adapter.js"></script>
 
 

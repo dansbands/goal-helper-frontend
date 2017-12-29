@@ -13,10 +13,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // NEW:
 
+
+      // Work in Google Api to populate suggested resources
+          // store value from search box
+              //update query portion of fetch with that value
+          // have response populate Resources
+              // make Resource class
+          // on change, update Resources.all() and render to DOM
+
       // Make collapse specific to that goal, close all others
           //on update, selected task should be expanded
 
-      // Work in Google Api to populate suggested resources
 
       // Create add link functionality from Suggested Resources to Goals
 
