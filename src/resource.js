@@ -1,5 +1,9 @@
-let allResources = []
+let allResourcesCopy = [{title: "<b>Learn JavaScript</b> | Codecademy", url: "https://www.codecademy.com/learn/learn-javascript", displayLink: "www.codecademy.com", body: "Codecademy is the easiest way to <b>learn</b> how …e, fun, and you <br>↵can do it with your friends.", id: 1}, {title: "<b>JavaScript</b> - <b>Learn</b> web development | MDN", url: "https://developer.mozilla.org/en-US/docs/Learn/JavaScript", displayLink: "developer.mozilla.org", body: "Dec 14, 2017 <b>...</b> <b>JavaScript</b> is a pro…mated 2D/3D graphics, or scrolling video&nbsp;...", id: 2}, {title: "<b>Learn JavaScript</b> - Free Interactive JavaScript Tutorial", url: "http://www.learn-js.org/", displayLink: "www.learn-js.org", body: "Learn-JS.org is a free interactive JavaScript tuto…ant to <b>learn</b> <br>↵<b>JavaScript</b>, fast.", id: 3}]
+
+let allResources = [{title: "<b>Learn JavaScript</b> | Codecademy", url: "https://www.codecademy.com/learn/learn-javascript", displayLink: "www.codecademy.com", body: "Codecademy is the easiest way to <b>learn</b> how …e, fun, and you <br>↵can do it with your friends.", id: 1}, {title: "<b>JavaScript</b> - <b>Learn</b> web development | MDN", url: "https://developer.mozilla.org/en-US/docs/Learn/JavaScript", displayLink: "developer.mozilla.org", body: "Dec 14, 2017 <b>...</b> <b>JavaScript</b> is a pro…mated 2D/3D graphics, or scrolling video&nbsp;...", id: 2}, {title: "<b>Learn JavaScript</b> - Free Interactive JavaScript Tutorial", url: "http://www.learn-js.org/", displayLink: "www.learn-js.org", body: "Learn-JS.org is a free interactive JavaScript tuto…ant to <b>learn</b> <br>↵<b>JavaScript</b>, fast.", id: 3}]
+
 let id = 1
+let newValue = "a"
 
 class Resource {
   constructor(json) {
@@ -21,6 +25,44 @@ class Resource {
     }
     this.getResourcesFromAll()
   }
+
+  static attachListeners() {
+    let res = document.getElementsByClassName('resources')
+    for (let i = 0; i < res.length; i++) {
+      res[i].addEventListener('click', this.panelAction)
+    }
+    // console.log(res)
+  }
+
+  static panelAction(e) {
+
+    if (e.target.className.includes('ok')) {
+      let id = this.id
+
+      // console.log(e.target.className)
+      Resource.selectResource(id)
+    }
+    else if (e.target.className.includes('remove')) {
+      this.className += " collapse"
+
+      console.log(this.className);
+      console.log(this);
+
+    }
+  }
+
+  static selectResource(id) {
+    let idNumber = parseInt(id.slice(9))
+    let resource = Resource.all().find(res => res.id === idNumber)
+    Link.createLink(resource)
+    // console.log('select!')
+    // console.log(resource);
+  }
+
+  static dismissResource() {
+
+  }
+
 
   static getResourcesFromAll() {
     let res = Resource.all()
@@ -58,7 +100,17 @@ class Resource {
     }
   }
 
+  static getSearchValue() {
+    let searchValue = document.getElementById('goal-title').value
+    // searchValue.replace(/ /g,"+");
+    newValue = searchValue.split(' ').join('+')
+    // console.log(newValue)
+    // Adapter.getResources()
+  }
 
+  // static newValue() {
+  //   return newValue
+  // }
 
 
 

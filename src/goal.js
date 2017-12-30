@@ -43,7 +43,10 @@ class Goal {
   }
 
   static attachListeners() {
-    document.getElementById('goal-form').addEventListener('submit', this.goalAction)
+    let goalForm = document.getElementById('goal-form')
+    goalForm.addEventListener('submit', this.goalAction)
+    goalForm.addEventListener('keyup', Resource.getSearchValue)
+
   }
 
 
@@ -53,9 +56,12 @@ class Goal {
     e.preventDefault()
     let goalId = document.getElementById('goal-id')
     let instructions = document.getElementById('instructions')
+    // Adapter.getResources()
+    Resource.getResourcesFromAll()//this gives me some data without making an api call
+    Resource.attachListeners()
 
     if (goalId.value === "0") {
-      console.log(goalId.value);
+      // console.log(goalId.value);
       Goal.createGoal(e)
     } else {
 

@@ -1,4 +1,5 @@
 let userId = 0
+let count = 5
 
 
 class Adapter {
@@ -30,11 +31,17 @@ class Adapter {
     .then(json => Link.createLinks(json.goals))
   }
 
+  static countRequests() {
+    count ++
+    console.log('Request Number', count, 'since 645pm 12-29')
+  }
+
   static getResources() {
-    fetch(`https://www.googleapis.com/customsearch/v1?key=AIzaSyCyVz9Piq2CR5H69ntKh8IMkBPWLV2JXI0&cx=012707253764796649748:luz4j2cmipo&q=Learn+CSS`)
+    fetch(`https://www.googleapis.com/customsearch/v1?key=AIzaSyDFnFWcK87YDLp4JqaDI1iOlLYFo8qvwZw&cx=012707253764796649748:luz4j2cmipo&q=${newValue}`)
     .then(resp => resp.json())
-    .then(json => Resource.createResources(json.items))
     // .then(console.log)
+    .then(json => Resource.createResources(json.items))
+    .then(beef => Adapter.countRequests())
   }
 
   static createNewGoal(json) {

@@ -2,24 +2,34 @@ document.addEventListener('DOMContentLoaded', function() {
   Adapter.getUsers()
   Goal.attachListeners()
   User.attachListeners()
-  Link.attachListeners()
-  Adapter.getResources()
 })
 
 
 // TO DO:
 
+  // BUGS:
 
+      // When creating new goal, need to update value of form with new id value 
 
   // NEW:
 
+      // Clicking green check shoud add to current goal based on id in box (element id ='goal-id')
+        // It should also reduce the opacity or something to show it's added.
+        // The goal should open if it's collapsed to show the new goal
 
-      // Work in Google Api to populate suggested resources
-          // store value from search box
+      // Work in Google Api to:
+
+          // store value *from search box*
+              //parse that string (one two three) into (one+two+three) - do I have to account for other punctuation?
               //update query portion of fetch with that value
-          // have response populate Resources
-              // make Resource class
-          // on change, update Resources.all() and render to DOM
+          // on change, update Resources.all() and render to DOM using Resource.getResourcesFromAll()
+
+          // XX populate suggested resources
+          // XX have response populate Resources
+          // XX make Resource class
+
+
+
 
       // Make collapse specific to that goal, close all others
           //on update, selected task should be expanded
