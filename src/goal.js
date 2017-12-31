@@ -24,21 +24,21 @@ class Goal {
 
   static createGoalInstance(json) {
     let newGoal = new Goal(json)
-    console.log(newGoal)
     let goalVal = document.getElementById('goal-id')
     goalVal.value = newGoal.id
-    this.getGoalsFromAll()
+    this.getGoalsFromAll(newGoal.id)
+    Link.getLinksFromAll()
   }
 
   static getGoalsFromAll(jsonId) {
-    document.getElementById('goals').innerHTML=''
+    document.getElementById('accordion').innerHTML=''
     let goals = Goal.all()
     for (var i = 0; i < goals.length; i++) {
       let newGoal = goals[i]
       newGoal.addToGoalList()
     }
     if (jsonId) {
-      let goalDiv = document.getElementById(`collapse${id}`)
+      let goalDiv = document.getElementById(`collapse${jsonId}`)
       goalDiv.className += " in"
     }
   }
@@ -47,9 +47,21 @@ class Goal {
     let goalForm = document.getElementById('goal-form')
     goalForm.addEventListener('submit', this.goalAction)
     goalForm.addEventListener('keyup', Resource.getSearchValue)
+    document.getElementById('new-goal').addEventListener('click', this.newGoal)
 
   }
 
+  static newGoal() {
+    let title = document.getElementById('goal-title')
+    let notes = document.getElementById('goal-notes')
+    let id = document.getElementById('goal-id')
+    title.value = ''
+    // title.placeholder
+    notes.value = ''
+    id.value = 0
+    Goal.getGoalsFromAll()
+    Link.getLinksFromAll()
+  }
 
 
 
@@ -142,10 +154,10 @@ class Goal {
   ///// instance methods
 
   addToGoalList() {
-    let goalList = document.getElementById('goals')
+    let goalList = document.getElementById('accordion')
     let panel = document.createElement('div')
     panel.innerHTML = this.render()
-    panel.class = "panel-group"
+    panel.className = "panel panel-default"
     goalList.appendChild(panel)
     panel.addEventListener('click', this.panelAction)
   }
@@ -156,6 +168,8 @@ class Goal {
       let targetId = parseInt(e.target.id.slice(12))
       Goal.deleteFromAll(targetId)
       Goal.getGoalsFromAll()
+      Link.getLinksFromAll()
+
       Adapter.deleteGoal(targetId)
     } else if (e.target.id.includes('select-goal')){
       e.preventDefault()
@@ -180,20 +194,23 @@ class Goal {
 
   render () {
     return (
-      `<div class="panel panel-default">
-        <div class="panel-heading">
+      `<div class="panel-heading" role="tab" id="heading${this.id}">
           <h4 class="panel-title" style="overflow: hidden">
             <input type="checkbox" style="margin-right: 10px">
-            <a data-toggle="collapse" href="#collapse${this.id}" id="select-goal-${this.id}">${this.title}</a>
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse${this.id}" aria-expanded="false" aria-controls="collapse${this.id}" id="select-goal-${this.id}">
+              ${this.title}
+            </a>
             <div value="1" id="delete-goal-${this.id}" class="glyphicon glyphicon-trash pull-right"></div>
           </h4>
         </div>
-        <div id="collapse${this.id}" class="panel-collapse collapse">
-          <ul id="list-goals-${this.id}" class="list-group">
+        <div id="collapse${this.id}" class="panel-collapse collapse" role="tabpanel" aria-lebelledby="heading${this.id}">
 
-          </ul>
-          <div class="panel-footer">Notes: ${this.notes}</div>
-        </div>
+            <ul id="list-goals-${this.id}" class="list-group">
+
+            </ul>
+            <div class="panel-footer">Notes: ${this.notes}</div>
+
+
       </div>`
     )
   }
