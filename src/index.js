@@ -9,7 +9,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // BUGS:
 
-      // When creating new goal, need to update value of form with new id value 
+      // When creating new goal, need to update value of form with new id value
+
+      // Resources added to goals as links are now replacing their titles on page refresh,
+          //Resources are being assoociated as links,
+          //but not persisting
 
   // NEW:
 

@@ -5,7 +5,13 @@ class Link {
     this.id = json.id
     this.title = json.title
     this.url = json.url
-    this.goalId = goalId
+    //conditional
+    if (goalId) {
+      this.goalId = goalId
+    } else {
+      this.goalId = json.goal_id
+    }
+
     allLinks.push(this)
   }
 
@@ -22,13 +28,21 @@ class Link {
     this.getLinksFromAll()
   }
 
-  static createLink(resource) {
-    let goalId = document.getElementById('goal-id').value
-    let newLink = new Link(resource, goalId)
+// this is breaking...
+  static createLink(json) {
+    // let goalId = parseInt(document.getElementById('goal-id').value)
+    let newLink = new Link(json)
+    console.log(newLink)
     Link.getLinksFromAll()
+    // Adapter.updateLink(resource, goalId)
   }
 
   static getLinksFromAll() {
+    this.all().forEach(item => {
+      let div = document.getElementById(`list-goals-${item.goalId}`)
+      div.innerHTML = ''
+    })
+
     this.all().forEach(link => {
       let div = document.getElementById(`list-goals-${link.goalId}`)
       let li = document.createElement('li')

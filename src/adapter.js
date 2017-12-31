@@ -67,6 +67,29 @@ class Adapter {
     .then(beef => Link.getLinksFromAll())
   }
 
+  static createLink(json) {
+    fetch(`http://localhost:3000/api/v1/links`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(json)
+    }).then(resp => resp.json())
+    .then(data => Link.createLink(data))
+    // .then(beef => Link.getLinksFromAll())
+  }
+
+  // static updateLink(json, id) {
+  //   fetch(`http://localhost:3000/api/v1/goals/${id}`, {
+  //     method: 'PATCH',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(json)
+  //   }).then(resp => resp.json())
+  //   // .then(data => Link.up)
+  // }
+
   static deleteGoal(id) {
     fetch(`http://localhost:3000/api/v1/goals/${id}`, {
       method: 'DELETE',

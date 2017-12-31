@@ -54,9 +54,15 @@ class Resource {
   static selectResource(id) {
     let idNumber = parseInt(id.slice(9))
     let resource = Resource.all().find(res => res.id === idNumber)
-    Link.createLink(resource)
+    let goalId = parseInt(document.getElementById('goal-id').value)
+    resource["goal_id"] = goalId
+    Adapter.createLink(resource)
+
+    // Link.createLink(resource)
     // console.log('select!')
-    // console.log(resource);
+    // console.log("Resource:", resource);
+    // console.log("Goal Id:", goalId);
+
   }
 
   static dismissResource() {

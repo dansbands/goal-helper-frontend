@@ -14,6 +14,7 @@ class Goal {
   }
 
   static createGoals(json) {
+    allGoals = []
     for (var i = 0; i < json.length; i++) {
       let goal = json[i]
       let newGoal = new Goal(goal)
@@ -23,22 +24,22 @@ class Goal {
 
   static createGoalInstance(json) {
     let newGoal = new Goal(json)
+    console.log(newGoal)
+    let goalVal = document.getElementById('goal-id')
+    goalVal.value = newGoal.id
     this.getGoalsFromAll()
   }
 
-  static getGoalsFromAll(id) {
+  static getGoalsFromAll(jsonId) {
     document.getElementById('goals').innerHTML=''
     let goals = Goal.all()
     for (var i = 0; i < goals.length; i++) {
       let newGoal = goals[i]
       newGoal.addToGoalList()
     }
-    if (id) {
+    if (jsonId) {
       let goalDiv = document.getElementById(`collapse${id}`)
       goalDiv.className += " in"
-
-      // console.log()
-
     }
   }
 
@@ -56,12 +57,11 @@ class Goal {
     e.preventDefault()
     let goalId = document.getElementById('goal-id')
     let instructions = document.getElementById('instructions')
-    // Adapter.getResources()
+    // Adapter.getResources() //this makes an api call - running out of my daily limit
     Resource.getResourcesFromAll()//this gives me some data without making an api call
     Resource.attachListeners()
 
     if (goalId.value === "0") {
-      // console.log(goalId.value);
       Goal.createGoal(e)
     } else {
 
@@ -102,13 +102,11 @@ class Goal {
   static updateGoalInstance(json) {
     let currentGoal = Goal.all().find(obj => obj.id === json.id)
     let goalDiv = document.getElementById(`collapse${json.id}`)
-    console.log(currentGoal);
-    console.log(json);
-    console.log(goalDiv)
+    // console.log(currentGoal);
+    // console.log(json);
+    // console.log(goalDiv)
     currentGoal.title = json.title
     currentGoal.notes = json.notes
-    // currentGoal.title = json.links //do I need this, or will I update it in links?
-
     this.getGoalsFromAll(json.id)
   }
 
@@ -141,26 +139,6 @@ class Goal {
     }
   }
 
-  static populateGoalForm() {
-    console.log('click')
-  }
-
-  // static toggleCollapse() {
-  //   let elements = document.getElementsByClassName('collapse')
-  //   for (let i = 0; i < elements.length; i++) {
-  //     if (!elements[i].style.display) {
-  //       elements[i].style.display = "block"
-  //     }
-  //     if (elements[i].style.display === "none") {
-  //       elements[i].style.display = "block"
-  //     } else if (elements[i].style.display === "block"){
-  //       elements[i].style.display = "none"
-  //     }
-  //
-  //   }
-  //
-  //   // elements.forEach(el => console.log(el))
-  // }
   ///// instance methods
 
   addToGoalList() {
@@ -181,8 +159,6 @@ class Goal {
       Adapter.deleteGoal(targetId)
     } else if (e.target.id.includes('select-goal')){
       e.preventDefault()
-
-      console.log(this);
       let linkId = parseInt(e.target.id.slice(12))
       let currentGoal = Goal.all().find(obj => obj.id === linkId)
 
@@ -194,7 +170,7 @@ class Goal {
       goalNotes.value = currentGoal.notes
       goalId.value = currentGoal.id
 
-      Goal.populateGoalForm()
+      // Goal.populateGoalForm()
       // Goal.toggleCollapse()
     }
   }
