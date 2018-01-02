@@ -208,7 +208,7 @@ class Goal {
             <ul id="list-goals-${this.id}" class="list-group">
 
             </ul>
-            <div class="panel-footer">Notes: ${this.notes}</div>
+            <div class="panel-footer"><b>Notes:</b><br/> ${this.notes}</div>
 
 
       </div>`

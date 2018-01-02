@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // TO DO:
 
+ //Error in promise on switching users
+
   // BUGS:
 
       // When creating new goal, need to update value of form with new id value
