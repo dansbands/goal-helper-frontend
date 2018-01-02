@@ -5,29 +5,42 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 
 
+// TO MAKE IT RUN:
+
+  // Comment in Resource line 5 and comment out line 3
+  // Comment in Goal line 72, out line 73 (74 also might be a problem - comment out )
+  // Comment in Goal 188
+
+
 // TO DO:
 
  //Error in promise on switching users
+ //Change Submit button to Update for existing goal
+ //Change Enter a New Goal to Update Goal on selecting goal
+ //Create functionality to complete goals, appending to completed goals div
 
   // BUGS:
 
-      // When creating new goal, need to update value of form with new id value
 
-      // Resources added to goals as links are now replacing their titles on page refresh,
-          //Resources are being assoociated as links,
-          //but not persisting
+
 
   // NEW:
 
-      // Clicking green check shoud add to current goal based on id in box (element id ='goal-id')
+      // Clicking goal should get resources
+
+      // XX Clicking green check shoud add to current goal based on id in box (element id ='goal-id')
         // It should also reduce the opacity or something to show it's added.
         // The goal should open if it's collapsed to show the new goal
 
+      // Deleting goal or deleting resource should have some animiation/ transition
+
+
+
       // Work in Google Api to:
 
-          // store value *from search box*
-              //parse that string (one two three) into (one+two+three) - do I have to account for other punctuation?
-              //update query portion of fetch with that value
+          // XX store value *from search box*
+              // XX parse that string (one two three) into (one+two+three) - do I have to account for other punctuation?
+              // XX update query portion of fetch with that value
           // on change, update Resources.all() and render to DOM using Resource.getResourcesFromAll()
 
           // XX populate suggested resources
@@ -66,3 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // XX Links don't populate when switching users
       // XX Links don't open in new window
+      // XX When creating new goal, need to update value of form with new id value
+      // XX Resources added to goals as links are now replacing their titles on page refresh,
+      // XX Resources are being assoociated as links,
+      //but not persisting

@@ -1,6 +1,8 @@
 let allResourcesCopy = [{title: "<b>Learn JavaScript</b> | Codecademy", url: "https://www.codecademy.com/learn/learn-javascript", displayLink: "www.codecademy.com", body: "Codecademy is the easiest way to <b>learn</b> how …e, fun, and you <br>↵can do it with your friends.", id: 1}, {title: "<b>JavaScript</b> - <b>Learn</b> web development | MDN", url: "https://developer.mozilla.org/en-US/docs/Learn/JavaScript", displayLink: "developer.mozilla.org", body: "Dec 14, 2017 <b>...</b> <b>JavaScript</b> is a pro…mated 2D/3D graphics, or scrolling video&nbsp;...", id: 2}, {title: "<b>Learn JavaScript</b> - Free Interactive JavaScript Tutorial", url: "http://www.learn-js.org/", displayLink: "www.learn-js.org", body: "Learn-JS.org is a free interactive JavaScript tuto…ant to <b>learn</b> <br>↵<b>JavaScript</b>, fast.", id: 3}]
 
-let allResources = [{title: "<b>Learn JavaScript</b> | Codecademy", url: "https://www.codecademy.com/learn/learn-javascript", displayLink: "www.codecademy.com", body: "Codecademy is the easiest way to <b>learn</b> how …e, fun, and you <br>↵can do it with your friends.", id: 1}, {title: "<b>JavaScript</b> - <b>Learn</b> web development | MDN", url: "https://developer.mozilla.org/en-US/docs/Learn/JavaScript", displayLink: "developer.mozilla.org", body: "Dec 14, 2017 <b>...</b> <b>JavaScript</b> is a pro…mated 2D/3D graphics, or scrolling video&nbsp;...", id: 2}, {title: "<b>Learn JavaScript</b> - Free Interactive JavaScript Tutorial", url: "http://www.learn-js.org/", displayLink: "www.learn-js.org", body: "Learn-JS.org is a free interactive JavaScript tuto…ant to <b>learn</b> <br>↵<b>JavaScript</b>, fast.", id: 3}]
+// let allResources = [{title: "<b>Learn JavaScript</b> | Codecademy", url: "https://www.codecademy.com/learn/learn-javascript", displayLink: "www.codecademy.com", body: "Codecademy is the easiest way to <b>learn</b> how …e, fun, and you <br>↵can do it with your friends.", id: 1}, {title: "<b>JavaScript</b> - <b>Learn</b> web development | MDN", url: "https://developer.mozilla.org/en-US/docs/Learn/JavaScript", displayLink: "developer.mozilla.org", body: "Dec 14, 2017 <b>...</b> <b>JavaScript</b> is a pro…mated 2D/3D graphics, or scrolling video&nbsp;...", id: 2}, {title: "<b>Learn JavaScript</b> - Free Interactive JavaScript Tutorial", url: "http://www.learn-js.org/", displayLink: "www.learn-js.org", body: "Learn-JS.org is a free interactive JavaScript tuto…ant to <b>learn</b> <br>↵<b>JavaScript</b>, fast.", id: 3}]
+
+let allResources = []
 
 let id = 1
 let newValue = "a"
@@ -20,6 +22,7 @@ class Resource {
   }
 
   static createResources(json) {
+    allResources = []
     for (var i = 0; i < json.length; i++) {
       let resource = new Resource(json[i])
     }
@@ -52,6 +55,7 @@ class Resource {
   }
 
   static selectResource(id) {
+    console.log(id)
     let idNumber = parseInt(id.slice(9))
     let resource = Resource.all().find(res => res.id === idNumber)
     let goalId = parseInt(document.getElementById('goal-id').value)
@@ -71,9 +75,10 @@ class Resource {
 
 
   static getResourcesFromAll() {
+    let resources = document.getElementById('resources')
+    resources.innerHTML = ''
     let res = Resource.all()
     for (var i = 0; i < res.length; i++) {
-      let resources = document.getElementById('resources')
       let div = document.createElement('div')
       div.id = `resource-${res[i].id}`
       div.className = "panel panel-default resources"

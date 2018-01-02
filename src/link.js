@@ -40,16 +40,20 @@ class Link {
   static getLinksFromAll() {
     this.all().forEach(item => {
       let div = document.getElementById(`list-goals-${item.goalId}`)
-      div.innerHTML = ''
+      if (div) {
+        div.innerHTML = ''
+      }
     })
 
     this.all().forEach(link => {
       let div = document.getElementById(`list-goals-${link.goalId}`)
-      let li = document.createElement('li')
-      li.className = "list-group-item"
-      li.id = `goal-link-${link.id}`
-      li.innerHTML = `<a href="${link.url}" target="_blank">${link.title}</a>`
-      div.appendChild(li)
+      if (div) {        
+        let li = document.createElement('li')
+        li.className = "list-group-item"
+        li.id = `goal-link-${link.id}`
+        li.innerHTML = `<a href="${link.url}" target="_blank">${link.title}</a>`
+        div.appendChild(li)
+      }
     })
   }
 

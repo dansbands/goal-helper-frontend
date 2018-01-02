@@ -42,6 +42,7 @@ class Adapter {
     // .then(console.log)
     .then(json => Resource.createResources(json.items))
     .then(beef => Adapter.countRequests())
+    .then(chicken => Resource.attachListeners())
   }
 
   static createNewGoal(json) {

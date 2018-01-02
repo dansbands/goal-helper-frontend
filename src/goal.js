@@ -52,9 +52,15 @@ class Goal {
   }
 
   static newGoal() {
+
+
+    allResources = []
+    Resource.getResourcesFromAll()
     let title = document.getElementById('goal-title')
     let notes = document.getElementById('goal-notes')
     let id = document.getElementById('goal-id')
+    let instructions = document.getElementById('instructions')
+    instructions.innerText = 'Enter a New Goal'
     title.value = ''
     // title.placeholder
     notes.value = ''
@@ -69,8 +75,8 @@ class Goal {
     e.preventDefault()
     let goalId = document.getElementById('goal-id')
     let instructions = document.getElementById('instructions')
-    // Adapter.getResources() //this makes an api call - running out of my daily limit
-    Resource.getResourcesFromAll()//this gives me some data without making an api call
+    Adapter.getResources() //this makes an api call - running out of my daily limit
+    // Resource.getResourcesFromAll()//this gives me some data without making an api call
     Resource.attachListeners()
 
     if (goalId.value === "0") {
@@ -179,10 +185,17 @@ class Goal {
       let goalTitle = document.getElementById('goal-title')
       let goalNotes = document.getElementById('goal-notes')
       let goalId = document.getElementById('goal-id')
+      let instructions = document.getElementById('instructions')
 
       goalTitle.value = currentGoal.title
       goalNotes.value = currentGoal.notes
       goalId.value = currentGoal.id
+      instructions.innerText = 'Update Your Goal'
+
+      Resource.getSearchValue()
+      // Adapter.getResources()
+      // Resource.getResourcesFromAll()//this gives me some data without making an api call
+      Resource.attachListeners()
 
       // Goal.populateGoalForm()
       // Goal.toggleCollapse()
