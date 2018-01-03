@@ -13,9 +13,9 @@ class Adapter {
     fetch('http://localhost:3000/api/v1/users')
     .then(resp => resp.json())
     .then(json => User.createUsers(json))
-    .then(data => User.currentUser())
-    .then(beef => Adapter.getGoals())
-    .then(chicken => Adapter.getLinks())
+    .then(() => User.currentUser())
+    .then(() => Adapter.getGoals())
+    .then(() => Adapter.getLinks())
   }
 
   static getGoals() {

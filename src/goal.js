@@ -193,7 +193,7 @@ class Goal {
       instructions.innerText = 'Update Your Goal'
 
       Resource.getSearchValue()
-      // Adapter.getResources()
+      Adapter.getResources()
       // Resource.getResourcesFromAll()//this gives me some data without making an api call
       Resource.attachListeners()
 

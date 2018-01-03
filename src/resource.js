@@ -87,7 +87,7 @@ class Resource {
           <div class="row">
 
             <div class="col-sm-8">
-              <h4><a href=${res[i].url}>${res[i].title}</a></h4>
+              <h4><a href=${res[i].url} target="_blank">${res[i].title}</a></h4>
               <h6><a href=${res[i].url}>${res[i].displayLink}</a></h6>
             </div>
 
